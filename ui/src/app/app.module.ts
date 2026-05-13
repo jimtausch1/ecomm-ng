@@ -6,11 +6,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductCategoryMenuComponent } from './components/product-category-menu/product-category-menu.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
-import { ProductService } from './services/product.service';
 import { SearchComponent } from './components/search/search.component';
+import { ProductService } from './services/product.service';
 
 const routes: Routes = [
+  { path: 'products/:id', component: ProductDetailsComponent },
   { path: 'search/:keyword', component: ProductListComponent },
   { path: 'category/:id', component: ProductListComponent },
   { path: 'category', component: ProductListComponent },
@@ -25,6 +27,7 @@ const routes: Routes = [
     ProductListComponent,
     ProductCategoryMenuComponent,
     SearchComponent,
+    ProductDetailsComponent,
   ],
   imports: [RouterModule.forRoot(routes), BrowserModule, AppRoutingModule],
   providers: [provideHttpClient(), ProductService],
