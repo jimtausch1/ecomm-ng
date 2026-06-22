@@ -27,7 +27,8 @@
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
-              "zone.js"
+              "zone.js",
+              "@angular/localize/init"
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
@@ -62,7 +63,7 @@
                   "maximumError": "8kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "none"
             },
             "development": {
               "optimization": false,
@@ -79,7 +80,8 @@
               "buildTarget": "ecomm-ng:build:production"
             },
             "development": {
-              "buildTarget": "ecomm-ng:build:development"
+              "buildTarget": "ecomm-ng:build:development",
+              "hmr": true
             }
           },
           "defaultConfiguration": "development"
@@ -92,7 +94,8 @@
           "options": {
             "polyfills": [
               "zone.js",
-              "zone.js/testing"
+              "zone.js/testing",
+              "@angular/localize/init"
             ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [

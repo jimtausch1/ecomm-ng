@@ -779,6 +779,15 @@ a.primary-btn:hover {
   font-weight: bold;
 }
 
+.product-name h6 {
+  text-align: center;
+  max-width: 300px; /* Defines the maximum width constraint */
+  display: block; /* Ensures the element acts as a block-level container */
+  white-space: nowrap; /* Prevents text from wrapping to the next line */
+  overflow: hidden; /* Hides the content that overflows the boundary */
+  text-overflow: ellipsis;
+}
+
 /* 
  * ----------------------------
  * Footer section
@@ -993,7 +1002,7 @@ footer ul li {
     color: #205b8d;
     margin-left: 15px;
   }
-  .footer-pagination {
+  .header-pagination {
     text-align: center;
   }
   .product-box {

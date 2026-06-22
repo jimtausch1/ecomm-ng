@@ -15,7 +15,7 @@
       "type": "node-terminal",
       "request": "launch",
       "name": "client",
-      "command": "ng serve",
+      "command": "ng serve --hmr",
       "cwd": "${workspaceFolder}/ui"
     }
   ],

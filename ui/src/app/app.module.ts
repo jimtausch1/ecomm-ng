@@ -10,6 +10,7 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { SearchComponent } from './components/search/search.component';
 import { ProductService } from './services/product.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const routes: Routes = [
   { path: 'products/:id', component: ProductDetailsComponent },
@@ -29,7 +30,7 @@ const routes: Routes = [
     SearchComponent,
     ProductDetailsComponent,
   ],
-  imports: [RouterModule.forRoot(routes), BrowserModule, AppRoutingModule],
+  imports: [RouterModule.forRoot(routes), BrowserModule, AppRoutingModule, NgbModule],
   providers: [provideHttpClient(), ProductService],
   bootstrap: [AppComponent],
 })
