@@ -24,7 +24,8 @@
         </div>
       </div>
       <div class="row">
-        <div *ngFor="let product of products" class="col-sm-6 col-lg-3">
+        @for (product of products(); track $index) {
+        <div class="col-sm-6 col-lg-3">
           <div class="card">
             <div class="card-body">
               <div class="mx-auto d-block">
@@ -38,14 +39,17 @@
               </div>
               <hr />
               <div class="card-text text-sm-center">
-                <a href="#" class="primary-btn">Add to Cart</a>
+                <button (click)="addToCart(product)" class="btn btn-primary btn-sm">Add to Cart</button>
               </div>
             </div>
           </div>
         </div>
-        <div *ngIf="products.length === 0" class="alert alert-warning col-md-12" role="alert">
+        }
+        @if (products().length === 0) {
+        <div class="alert alert-warning col-md-12" role="alert">
           <p>No products found.</p>
         </div>
+        }
       </div>
     </div>
   </div>

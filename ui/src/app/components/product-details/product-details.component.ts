@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CartItem } from '../../common/cart-item';
 import { Product } from '../../common/product';
+import { CartService } from '../../services/cart.service';
 import { ProductService } from '../../services/product.service';
 
 @Component({
@@ -10,10 +12,11 @@ import { ProductService } from '../../services/product.service';
   styleUrl: './product-details.component.css',
 })
 export class ProductDetailsComponent {
-  product: Product = {} as Product;
+  product = signal({} as Product);
 
   constructor(
     private productService: ProductService,
+    private cartService: CartService,
     private route: ActivatedRoute,
   ) {}
 
@@ -27,7 +30,13 @@ export class ProductDetailsComponent {
     const theProductId: number = +this.route.snapshot.paramMap.get('id')!;
 
     this.productService.getProduct(theProductId).subscribe((data) => {
-      this.product = data;
+      this.product.set(data);
     });
+  }
+
+  addToCart(theProduct: Product) {
+    console.log(`Adding to cart: ${theProduct.name}, ${theProduct.unitPrice}`);
+    const theCartItem = new CartItem(theProduct);
+    this.cartService.addToCart(theCartItem);
   }
 }

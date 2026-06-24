@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CartItem } from '../../common/cart-item';
 import { Product } from '../../common/product';
+import { CartService } from '../../services/cart.service';
 import { ProductService } from '../../services/product.service';
 
 @Component({
@@ -10,7 +12,7 @@ import { ProductService } from '../../services/product.service';
   styleUrl: './product-list.component.css',
 })
 export class ProductListComponent {
-  products: Product[] = [];
+  products = signal([] as Product[]);
   currentCategoryId: number = 1;
   previousCategoryId: number = 1;
   searchMode: boolean = false;
@@ -23,6 +25,7 @@ export class ProductListComponent {
 
   constructor(
     private productService: ProductService,
+    private cartService: CartService,
     private route: ActivatedRoute,
   ) {}
 
@@ -93,10 +96,16 @@ export class ProductListComponent {
 
   processResult() {
     return (data: any) => {
-      this.products = data._embedded.products;
+      this.products.set(data._embedded.products);
       this.thePageSize = data.page.size;
       this.thePageNumber = data.page.number + 1;
       this.theTotalElements = data.page.totalElements;
     };
+  }
+
+  addToCart(theProduct: Product) {
+    console.log(`Adding to cart: ${theProduct.name}, ${theProduct.unitPrice}`);
+    const cartItem = new CartItem(theProduct);
+    this.cartService.addToCart(cartItem);
   }
 }
