@@ -585,11 +585,11 @@ input.au-input.au-input-xl {
  */
 
 .form-area {
-  background: #e5e5e5;
   position: relative;
   margin-bottom: 45px;
-  padding: 50px 20px;
-  border: 3px solid #ccc;
+  padding: 30px 20px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
 }
 .form-area h3 {
   position: absolute;
@@ -970,7 +970,7 @@ footer ul li {
     margin-right: 15px;
   }
   .main-content.page-m {
-    padding: 10% 0 !important;
+    padding: 10% 30% 10% 5% !important;
   }
   .header-mobile .navbar-mobile {
     display: none;

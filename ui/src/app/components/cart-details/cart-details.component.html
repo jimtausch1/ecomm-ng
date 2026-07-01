@@ -63,7 +63,7 @@
               @if (cartItems.length > 0) {
               <div class="text-right mt-3">
                 <h5>Total: {{ totalPrice | currency }}</h5>
-                <!-- <button (click)="checkout()" class="btn btn-success">Checkout</button> -->
+                <a routerLink="/checkout" class="btn btn-success">Checkout</a>
               </div>
               }
             </div>
