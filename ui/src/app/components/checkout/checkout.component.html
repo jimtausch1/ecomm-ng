@@ -29,6 +29,17 @@
                 <div formGroupName="shippingAddress" class="form-area">
                   <div class="row">
                     <div class="col-md-4">
+                      <label for="country">Country</label>
+                      <select id="country" formControlName="country" class="form-select"
+                        (change)="getStates('shippingAddress')">
+                        @for (country of (countries | async); track country.code) {
+                        <option [value]="country.code">
+                          {{ country.name }}
+                        </option>
+                        }
+                      </select>
+                    </div>
+                    <div class="col-md-4">
                       <label for="street">Street</label>
                       <input type="text" id="street" formControlName="street" class="form-control" />
                     </div>
@@ -36,19 +47,21 @@
                       <label for="city">City</label>
                       <input type="text" id="city" formControlName="city" class="form-control" />
                     </div>
-                    <div class="col-md-4">
-                      <label for="state">State</label>
-                      <input type="text" id="state" formControlName="state" class="form-control" />
-                    </div>
                   </div>
                   <div class="row">
                     <div class="col-md-4">
-                      <label for="zipCode">Zip Code</label>
-                      <input type="text" id="zipCode" formControlName="zipCode" class="form-control" />
+                      <label for="state">State</label>
+                      <select id="state" formControlName="state" class="form-select">
+                        @for (state of (shippingAddressStates | async); track state.id) {
+                        <option [value]="state.id">
+                          {{ state.name }}
+                        </option>
+                        }
+                      </select>
                     </div>
                     <div class="col-md-4">
-                      <label for="country">Country</label>
-                      <input type="text" id="country" formControlName="country" class="form-control" />
+                      <label for="zipCode">Zip Code</label>
+                      <input type="text" id="zipCode" formControlName="zipCode" class="form-control" />
                     </div>
                   </div>
                 </div>
@@ -63,6 +76,17 @@
                 <div formGroupName="billingAddress" class="form-area">
                   <div class="row">
                     <div class="col-md-4">
+                      <label for="billingCountry">Country</label>
+                      <select id="billingCountry" formControlName="country" class="form-select"
+                        (change)="getStates('billingAddress')">
+                        @for (country of (countries | async); track country.code) {
+                        <option [value]="country.code">
+                          {{ country.name }}
+                        </option>
+                        }
+                      </select>
+                    </div>
+                    <div class="col-md-4">
                       <label for="billingStreet">Street</label>
                       <input type="text" id="billingStreet" formControlName="street" class="form-control" />
                     </div>
@@ -70,19 +94,21 @@
                       <label for="billingCity">City</label>
                       <input type="text" id="billingCity" formControlName="city" class="form-control" />
                     </div>
-                    <div class="col-md-4">
-                      <label for="billingState">State</label>
-                      <input type="text" id="billingState" formControlName="state" class="form-control" />
-                    </div>
                   </div>
                   <div class="row">
                     <div class="col-md-4">
-                      <label for="billingZipCode">Zip Code</label>
-                      <input type="text" id="billingZipCode" formControlName="zipCode" class="form-control" />
+                      <label for="billingState">State</label>
+                      <select id="billingState" formControlName="state" class="form-select">
+                        @for (state of (billingAddressStates | async); track state.id) {
+                        <option [value]="state.id">
+                          {{ state.name }}
+                        </option>
+                        }
+                      </select>
                     </div>
                     <div class="col-md-4">
-                      <label for="billingCountry">Country</label>
-                      <input type="text" id="billingCountry" formControlName="country" class="form-control" />
+                      <label for="billingZipCode">Zip Code</label>
+                      <input type="text" id="billingZipCode" formControlName="zipCode" class="form-control" />
                     </div>
                   </div>
                 </div>
@@ -95,9 +121,25 @@
                       <input type="text" id="cardNumber" formControlName="cardNumber" class="form-control" />
                     </div>
                     <div class="col-md-4">
-                      <label for="expirationDate">Expiration Date</label>
-                      <input type="text" id="expirationDate" formControlName="expirationDate" class="form-control"
-                        placeholder="MM/YY" />
+                      <label for="expirationMonth">Expiration Month</label>
+                      <select id="expirationMonth" formControlName="expirationMonth" class="form-select">
+                        @for (month of creditCardMonths; track $index) {
+                        <option [value]="month">
+                          {{ month }}
+                        </option>
+                        }
+                      </select>
+                    </div>
+                    <div class="col-md-4">
+                      <label for="expirationYear">Expiration Year</label>
+                      <select id="expirationYear" formControlName="expirationYear" class="form-select"
+                        (change)="handleMonthsAndYears()">
+                        @for (year of creditCardYears; track $index) {
+                        <option [value]="year">
+                          {{ year }}
+                        </option>
+                        }
+                      </select>
                     </div>
                     <div class="col-md-4">
                       <label for="cvv">CVV</label>
