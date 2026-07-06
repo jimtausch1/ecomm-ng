@@ -8,6 +8,7 @@ import {
 import { Observable } from 'rxjs';
 import { Country } from '../../common/country';
 import { State } from '../../common/state';
+import { CartService } from '../../services/cart.service';
 import { ShopformService } from '../../services/shopform.service';
 import { ShopValidators } from '../../validators/shop-validators';
 
@@ -30,9 +31,12 @@ export class CheckoutComponent {
   constructor(
     private formBuilder: FormBuilder,
     private shopformService: ShopformService,
+    private cartService: CartService,
   ) {}
 
   ngOnInit(): void {
+    this.reviewCartDetails();
+
     this.checkoutFormGroup = this.formBuilder.group({
       customer: this.formBuilder.group({
         firstName: new FormControl('', {
@@ -150,6 +154,15 @@ export class CheckoutComponent {
     });
 
     this.countries = this.shopformService.getCountries();
+  }
+
+  reviewCartDetails() {
+    this.cartService.totalQuantity.subscribe((totalQuantity) => {
+      this.totalQuantity = totalQuantity;
+    });
+    this.cartService.totalPrice.subscribe((totalPrice) => {
+      this.totalPrice = totalPrice;
+    });
   }
 
   onSubmit(): void {
