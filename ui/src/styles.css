@@ -109,6 +109,11 @@ a:hover {
   transition: all 0.3s ease;
 }
 
+.alert {
+  --bs-alert-padding-x: 0.5rem !important;
+  --bs-alert-padding-y: 0.125rem !important;
+}
+
 /*Layout Css*/
 .section-content-p35 {
   padding: 0 35px;

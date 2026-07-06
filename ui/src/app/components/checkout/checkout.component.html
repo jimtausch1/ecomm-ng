@@ -6,21 +6,24 @@
           <div class="card">
             <div class="card-header">Checkout</div>
             <div class="card-body">
-              <form [formGroup]="checkoutFormGroup!" (ngSubmit)="onSubmit()">
+              <form [formGroup]="checkoutFormGroup!" #formDir="ngForm" (ngSubmit)="onSubmit()">
                 <h5>Customer Information:</h5>
                 <div formGroupName="customer" class="form-area">
                   <div class="row">
                     <div class="col-md-4">
                       <label for="firstName">First Name</label>
                       <input type="text" id="firstName" formControlName="firstName" class="form-control" />
+                      <app-control-errors [controlName]="'firstName'" />
                     </div>
                     <div class="col-md-4">
                       <label for="lastName">Last Name</label>
                       <input type="text" id="lastName" formControlName="lastName" class="form-control" />
+                      <app-control-errors [controlName]="'lastName'" />
                     </div>
                     <div class="col-md-4">
                       <label for="email">Email</label>
                       <input type="email" id="email" formControlName="email" class="form-control" />
+                      <app-control-errors [controlName]="'email'" />
                     </div>
                   </div>
                 </div>
@@ -38,14 +41,17 @@
                         </option>
                         }
                       </select>
+                      <app-control-errors [controlName]="'country'" />
                     </div>
                     <div class="col-md-4">
                       <label for="street">Street</label>
                       <input type="text" id="street" formControlName="street" class="form-control" />
+                      <app-control-errors [controlName]="'street'" />
                     </div>
                     <div class="col-md-4">
                       <label for="city">City</label>
                       <input type="text" id="city" formControlName="city" class="form-control" />
+                      <app-control-errors [controlName]="'city'" />
                     </div>
                   </div>
                   <div class="row">
@@ -58,10 +64,12 @@
                         </option>
                         }
                       </select>
+                      <app-control-errors [controlName]="'state'" />
                     </div>
                     <div class="col-md-4">
                       <label for="zipCode">Zip Code</label>
                       <input type="text" id="zipCode" formControlName="zipCode" class="form-control" />
+                      <app-control-errors [controlName]="'zipCode'" />
                     </div>
                   </div>
                 </div>
@@ -85,17 +93,18 @@
                         </option>
                         }
                       </select>
+                      <app-control-errors [controlName]="'country'" />
                     </div>
                     <div class="col-md-4">
                       <label for="billingStreet">Street</label>
                       <input type="text" id="billingStreet" formControlName="street" class="form-control" />
+                      <app-control-errors [controlName]="'street'" />
                     </div>
                     <div class="col-md-4">
                       <label for="billingCity">City</label>
                       <input type="text" id="billingCity" formControlName="city" class="form-control" />
+                      <app-control-errors [controlName]="'city'" />
                     </div>
-                  </div>
-                  <div class="row">
                     <div class="col-md-4">
                       <label for="billingState">State</label>
                       <select id="billingState" formControlName="state" class="form-select">
@@ -105,10 +114,12 @@
                         </option>
                         }
                       </select>
+                      <app-control-errors [controlName]="'state'" />
                     </div>
                     <div class="col-md-4">
                       <label for="billingZipCode">Zip Code</label>
                       <input type="text" id="billingZipCode" formControlName="zipCode" class="form-control" />
+                      <app-control-errors [controlName]="'zipCode'" />
                     </div>
                   </div>
                 </div>
@@ -119,6 +130,7 @@
                     <div class="col-md-4">
                       <label for="cardNumber">Card Number</label>
                       <input type="text" id="cardNumber" formControlName="cardNumber" class="form-control" />
+                      <app-control-errors [controlName]="'cardNumber'" />
                     </div>
                     <div class="col-md-4">
                       <label for="expirationMonth">Expiration Month</label>
@@ -129,6 +141,7 @@
                         </option>
                         }
                       </select>
+                      <app-control-errors [controlName]="'expirationMonth'" />
                     </div>
                     <div class="col-md-4">
                       <label for="expirationYear">Expiration Year</label>
@@ -140,10 +153,17 @@
                         </option>
                         }
                       </select>
+                      <app-control-errors [controlName]="'expirationYear'" />
                     </div>
                     <div class="col-md-4">
                       <label for="cvv">CVV</label>
                       <input type="text" id="cvv" formControlName="cvv" class="form-control" />
+                      <app-control-errors [controlName]="'cvv'" />
+                    </div>
+                    <div class="col-md-4">
+                      <label for="cardHolderName">Card Holder Name</label>
+                      <input type="text" id="cardHolderName" formControlName="nameOnCard" class="form-control" />
+                      <app-control-errors [controlName]="'nameOnCard'" />
                     </div>
                   </div>
                 </div>
@@ -164,3 +184,4 @@
       </div>
     </div>
   </div>
+</div>
